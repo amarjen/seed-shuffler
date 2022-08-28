@@ -20,7 +20,18 @@ pypi:
 
 pdf:
 	export SEED="own ginger excuse humble abstract always remain math solar jealous craft coach"
-	seedshuffler --seed="${SEED}" > out.txt
-	enscript -2r -f Courier7 -F Courier7 -j out.txt -o out.ps
-	ps2pdf out.ps
-	rm out.ps out.txt
+	seedshuffler --seed="${SEED}" > grid.txt
+	enscript -2r -f Courier7 -F Courier7 -j grid.txt -o grid.ps
+	ps2pdf grid.ps
+	rm grid.ps grid.txt
+
+jpg:
+	convert \
+		-verbose \
+		-density 150 \
+		-trim \
+		grid.pdf \
+		-quality 100 \
+		-flatten \
+		-sharpen 0x1.0 \
+		grid.jpg

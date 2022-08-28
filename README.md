@@ -8,7 +8,7 @@ check of the generated grid.
 This project is intended for educational purposes and is not meant to be used on
 any computer or device connected to the internet.
 
-## Instalation:
+## Installation:
 
 ```
 python -m pip install seed-shuffler
