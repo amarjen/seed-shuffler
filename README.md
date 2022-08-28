@@ -11,6 +11,11 @@ any computer or device connected to the internet.
 ## Instalation:
 
 ```
+python -m pip install seed-shuffler
+```
+
+or, via the git repo:
+```
 git clone https://github.com/amarjen/seed-shuffler.git
 cd seed-shuffler
 python -m pip install .
@@ -22,13 +27,13 @@ unless it is on a trusted airgap computer and you know what you are doing.
 :warning: Don't Trust, Verify
 
 ```
-shuffler --seed="own ginger excuse humble abstract always remain math solar jealous craft coach"
+seedshuffler --seed="own ginger excuse humble abstract always remain math solar jealous craft coach"
 ```
 
 In order to generate a nice printable PDF from the text output we can use the legendary tools `enscript` and `ps2pdf`, eg:
 ```
 export SEED="own ginger excuse humble abstract always remain math solar jealous craft coach"
-shuffler --seed="${SEED}" > grid.txt
+seedshuffler --seed="${SEED}" > grid.txt
 enscript -2r -f Courier7 -F Courier7 -j grid.txt -o grid.ps
 ps2pdf grid.ps
 # clean files
