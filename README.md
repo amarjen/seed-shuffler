@@ -3,9 +3,10 @@
 
 This project is inspired in the awesome tool [borderwallets](https://www.borderwallets.com/),
 and the goal is to provide a simple linux commandline tool that serves as a double
-check of the generated grid. 
+check of the generated grid.
 
-This project is intended for educational purposes.
+This project is intended for educational purposes and is not meant to be used on
+any computer or device connected to the internet.
 
 ## Instalation:
 
@@ -16,18 +17,22 @@ python -m pip install .
 ```
 
 ## Usage:
+:biohazard: Remember not to write any real seed linked to actual funds,
+unless it is on a trusted airgap computer and you know what you are doing.
+:warning: Don't Trust, Verify
+
 ```
 shuffler --seed="own ginger excuse humble abstract always remain math solar jealous craft coach"
 ```
 
-In order to generate a printable PDF from the text output we can use the legendary tools `enscript` and `ps2pdf`, eg:
+In order to generate a nice printable PDF from the text output we can use the legendary tools `enscript` and `ps2pdf`, eg:
 ```
 export SEED="own ginger excuse humble abstract always remain math solar jealous craft coach"
-shuffler --seed="${SEED}" > out.txt
-enscript -2r -f Courier7 -F Courier7 -j out.txt -o out.ps
-ps2pdf out.ps
+shuffler --seed="${SEED}" > grid.txt
+enscript -2r -f Courier7 -F Courier7 -j grid.txt -o grid.ps
+ps2pdf grid.ps
 # clean files
-rm out.ps out.txt
+rm grid.pdf grid.ps grid.txt
 ```
 
 ## External dependencies:
