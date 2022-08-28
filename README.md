@@ -10,14 +10,24 @@ This project is intended for educational purposes.
 ## Instalation:
 
 ```
-git clone https://github.com/amarjen/seed-shuffler
-cd seedshuffler
+git clone https://github.com/amarjen/seed-shuffler.git
+cd seed-shuffler
 python -m pip install .
 ```
 
 ## Usage:
 ```
-seedshuffler --seed="own ginger excuse humble abstract always remain math solar jealous craft coach"
+shuffler --seed="own ginger excuse humble abstract always remain math solar jealous craft coach"
+```
+
+In order to generate a printable PDF from the text output we can use the legendary tools `enscript` and `ps2pdf`, eg:
+```
+export SEED="own ginger excuse humble abstract always remain math solar jealous craft coach"
+shuffler --seed="${SEED}" > out.txt
+enscript -2r -f Courier7 -F Courier7 -j out.txt -o out.ps
+ps2pdf out.ps
+# clean files
+rm out.ps out.txt
 ```
 
 ## External dependencies:
