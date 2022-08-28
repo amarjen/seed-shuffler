@@ -12,6 +12,12 @@ gitpush:
 	git commit -m "$(m)"
 	git push origin
 
+pypi:
+	rm dist/*
+	python setup.py bdist_wheel --universal
+	gpg --detach-sign -a dist/*
+	twine upload -r test-pypi dist/* --verbose
+
 pdf:
 	export SEED="own ginger excuse humble abstract always remain math solar jealous craft coach"
 	shuffler --seed="${SEED}" > out.txt
