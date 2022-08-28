@@ -40,6 +40,8 @@ ps2pdf grid.ps
 rm grid.pdf grid.ps grid.txt
 ```
 
+![image](./grid.jpg)
+
 ## External dependencies:
 - [Embit](https://www.embit.rocks) is only used to validate a bip39 seed by computing its checksum.
 - The repo includes the module [uheprng.py](https://github.com/wuftymerguftyguff/uheprng) a python implementation of the Ultra High Entropy Pseudo Random Number Generator developed by
