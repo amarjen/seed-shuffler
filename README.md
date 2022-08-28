@@ -9,14 +9,18 @@ This project is intended for educational purposes.
 
 ## Instalation:
 
-git clone ...
+```
+git clone https://github.com/amarjen/seed-shuffler
 cd seedshuffler
 python -m pip install .
+```
 
 ## Usage:
+```
 seedshuffler --seed="own ginger excuse humble abstract always remain math solar jealous craft coach"
+```
 
 ## External dependencies:
-- [Embit](https://www.embit.rocks) is used for calculate the checksum of the bip39 seed.
-- The code includes the module [uheprng.py](https://github.com/wuftymerguftyguff/uheprng) a python implementation of the Ultra High Entropy Pseudo Random Number Generator developed by
+- [Embit](https://www.embit.rocks) is only used to validate a bip39 seed by computing its checksum.
+- The repo includes the module [uheprng.py](https://github.com/wuftymerguftyguff/uheprng) a python implementation of the Ultra High Entropy Pseudo Random Number Generator developed by
 Steve Gibson of grc.com. This is the PRNG that the tool uses to deterministically generate a grid from a bip39 seed.
