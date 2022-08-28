@@ -18,7 +18,16 @@ gitrefresh:
 
 pypi:
 	rm dist/*
-	python setup.py bdist_wheel --universal
+	#python setup.py bdist_wheel --universal
+	python -m build  --sdist  --outdir dist .
+	gpg --detach-sign -a dist/*
+	twine upload -r pypi dist/*
+
+
+pypi-test:
+	rm dist/*
+	#python setup.py bdist_wheel --universal
+	python -m build  --sdist  --outdir dist .
 	gpg --detach-sign -a dist/*
 	twine upload -r test-pypi dist/* --verbose
 
