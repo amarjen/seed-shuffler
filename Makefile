@@ -12,6 +12,10 @@ gitpush:
 	git commit -m "$(m)"
 	git push origin
 
+gitrefresh:
+	#after any change to .gitignore
+	git rm -r --cached .
+
 pypi:
 	rm dist/*
 	python setup.py bdist_wheel --universal
