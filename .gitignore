@@ -26,4 +26,3 @@ coverage.xml
 .ipynb_checkpoints/
 *.ipynb
 *.pdf
-*.txt
