@@ -5,6 +5,8 @@ __pycache__/
 # Builds
 develop-eggs/
 dist/
+build/
+pkg/
 eggs/
 *.egg-info/
 .installed.cfg

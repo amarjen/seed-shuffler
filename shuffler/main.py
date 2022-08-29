@@ -49,11 +49,9 @@ class Shuffler:
         return lst
 
     def table(self):
-        """
-        Generates a text table with the shuffled wordlist
-        """
         output = ""
         header = "    ".join([chr(n) for n in range(65, 81)])
+        output = ""
 
         for page in range(2):
             output += f"       {header}\n"
@@ -67,6 +65,9 @@ class Shuffler:
             output += 85 * "-" + "\n"
             output += f"Seed: {self.seed}\n"
             output += 85 * "-"
+            if page == 0:
+                output += "\n"
+
         return output
 
 
