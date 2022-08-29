@@ -43,7 +43,6 @@ Qualifying MWC multipliers are: 187884, 686118, 898134, 1104375, 1250205,
 import random
 import math
 
-
 class _Mash:
     """
     ============================================================================
@@ -53,26 +52,24 @@ class _Mash:
     which is good.    See: http://baagoe.com/en/RandomMusings/hash/avalanche.xhtml
     ============================================================================
     """
-
     def __init__(self):
-        self.n = 0xEFC8249D
+        self.n = 0xefc8249d
 
     def masher(self, data=None):
-        if data:
+        if (data): 
             data = str(data)
             for i in range(0, len(data)):
                 self.n += ord(data[i])
                 h = 0.02519603282416938 * self.n
-                self.n = h // pow(2, 0)
-                h -= self.n
-                h *= self.n
-                self.n = h // pow(2, 0)
-                h -= self.n
+                self.n = h // pow(2, 0) 
+                h -= self.n 
+                h *= self.n 
+                self.n = h // pow(2, 0) 
+                h -= self.n 
                 self.n += h * 0x100000000
             return (self.n // pow(2, 0)) * 2.3283064365386963e-10
         else:
-            self.n = 0xEFC8249D
-
+            self.n = 0xefc8249d         
 
 class UHEPRNG:
     def __init__(self):
@@ -82,14 +79,14 @@ class UHEPRNG:
         pythons own PRNG. This is okay since although its generator might not
         be wonderful, it's useful for establishing large startup entropy for our usage.
         """
-        self.o = 48
+        self.o = 48 
         self.c = 1
         self.p = self.o
         self.s = list()
         self.mash = _Mash()
         for i in range(0, self.o):
             self.s.append(self.mash.masher(random.random))
-
+            
     def random(self, range):
         """
         arguments: int range
@@ -100,56 +97,52 @@ class UHEPRNG:
         resolution 53-bit prng (0 to <1), then we multiply this by the caller's
         "range" param and take the "floor" to return a equally probable integer.
         """
-        return int(
-            math.floor(
-                range
-                * (
-                    self._rawprng()
-                    + (self._rawprng() * (0x200000 | 0)) * 1.1102230246251565e-16
-                )
-            )
-        )
+        return int(math.floor(range * (self._rawprng() + (self._rawprng() * (0x200000 | 0)) * 1.1102230246251565e-16)))
 
-    def string(self, count):
+    def string(self,count):
         """
         arguments: int count of printable chars required.
         returns: a string of chars count chracters long
         This EXPORTED function 'string(n)' returns a pseudo-random string of
         'n' printable characters ranging from chr(33) to chr(126) inclusive.
         """
-        string = str()
-        for i in range(0, count):
-            string += chr(33 + self.random(94))
-        return string
-
-    def bytes(self, count):
+        string=str()
+        for i in range(0,count):
+            string+=(chr(33+self.random(94)))
+        return string;
+    
+    def bytes(self,count):
         """
         arguments: int count of bytes required.
         returns: a string of random bytes on the range 0x00 to 0xff
         This EXPORTED function 'bytes(n)' returns a pseudo-random string of
         'n' bytes ranging from chr(0) to chr(255) inclusive.
         """
-        string = str()
-        for i in range(0, count):
-            string += chr(self.random(256))
-        return string
-
-    def _hashString(self, inStr):
-        """ """
+        string=str()
+        for i in range(0,count):
+            string+=chr(self.random(256))
+        return string;
+            
+                      
+    def _hashString(self,inStr):
+        """
+        """
         inStr = inStr.strip()
         self.mash.masher(inStr)
-        for i in range(0, len(inStr)):
+        for i in range(0,len(inStr)):
             k = ord(inStr[i])
-            for j in range(0, self.o):
+            for j  in range(0,self.o):
                 self.s[j] -= self.mash.masher(k)
                 if self.s[j] < 0:
                     self.s[j] += 1
+            
 
     def _initState(self):
-        """ """
+        """
+        """
         self.mash.masher()
         for i in range(0, self.o):
-            self.s[i] = self.mash.masher(" ")
+            self.s[i]=self.mash.masher(' ')
         self.c = 1
         self.p = self.o
 
@@ -161,10 +154,12 @@ class UHEPRNG:
         [0-1] return function, and by the random 'string(n)' function which returns 'n'
         characters from 33 to 126.
         """
-        self.p += 1
+        self.p += 1 
         if self.p >= self.o:
-            self.p = 0
+                        self.p = 0
         t = 1768863 * self.s[self.p] + self.c * 2.3283064365386963e-10
         self.c = int(t) | 0
         self.s[self.p] = t - self.c
         return self.s[self.p]
+
+   
