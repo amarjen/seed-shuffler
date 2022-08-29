@@ -22,6 +22,9 @@ class Shuffler:
         self.shuffled_list = self._shuffle()
 
     def _init_prng(self):
+        """
+        Initializes the PRNG given the provided seed
+        """
         self.prng._initState()
         self.prng._hashString(self.seed)
 
@@ -46,6 +49,9 @@ class Shuffler:
         return lst
 
     def table(self):
+        """
+        Generates a text table with the shuffled wordlist
+        """
         output = ""
         header = "    ".join([chr(n) for n in range(65, 81)])
 
