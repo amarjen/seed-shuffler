@@ -8,7 +8,6 @@ import argparse
 
 WORDLIST = files("shuffler.wordlists").joinpath("english.txt").read_text().splitlines()
 
-
 class Shuffler:
     def __init__(self, seed):
         self.seed = seed
