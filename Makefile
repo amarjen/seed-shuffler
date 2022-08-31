@@ -7,6 +7,9 @@ install:
 install-editable:
 	python -m pip install --editable .
 
+gitpull:
+	git pull --rebase
+
 gitpush:
 	git add .
 	git commit -m "$(m)"
